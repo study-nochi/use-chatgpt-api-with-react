@@ -16,7 +16,7 @@ function App() {
   const [typing, setTyping] = useState(false);
   const [messages, setMessage] = useState<MessageModel[]>([
     {
-      message: "Hello, I am ChatGPT",
+      message: "한국어로 말하도록 학습된 Chat GPT 입니다.",
       sender: "ChatGPT",
       direction: "incoming",
       position: "first",
@@ -90,24 +90,22 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div style={{ position: "relative", height: "800px", width: "700px" }}>
-        <MainContainer>
-          <ChatContainer>
-            <MessageList
-              scrollBehavior="smooth"
-              typingIndicator={
-                typing ? <TypingIndicator content="ChatGPT is typing" /> : null
-              }
-            >
-              {messages?.map((message, i) => {
-                return <Message key={i} model={message} />;
-              })}
-            </MessageList>
-            <MessageInput placeholder="Type message here" onSend={handleSend} />
-          </ChatContainer>
-        </MainContainer>
-      </div>
+    <div style={{ width: "100%", height: "100%" }}>
+      <MainContainer>
+        <ChatContainer>
+          <MessageList
+            scrollBehavior="smooth"
+            typingIndicator={
+              typing ? <TypingIndicator content="ChatGPT is typing" /> : null
+            }
+          >
+            {messages?.map((message, i) => {
+              return <Message key={i} model={message} />;
+            })}
+          </MessageList>
+          <MessageInput placeholder="Type message here" onSend={handleSend} />
+        </ChatContainer>
+      </MainContainer>
     </div>
   );
 }
